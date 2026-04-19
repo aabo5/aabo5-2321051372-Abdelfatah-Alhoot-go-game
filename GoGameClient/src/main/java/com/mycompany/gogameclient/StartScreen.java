@@ -55,7 +55,7 @@ public class StartScreen extends javax.swing.JFrame {
         setResizable(false);
 
         MainPanel.setBackground(new java.awt.Color(102, 51, 0));
-        MainPanel.setPreferredSize(new java.awt.Dimension(400, 400));
+        MainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         MainPanel.setLayout(new javax.swing.BoxLayout(MainPanel, javax.swing.BoxLayout.LINE_AXIS));
         MainPanel.add(filler1);
 
@@ -87,6 +87,11 @@ public class StartScreen extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("EXIT");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, 50));
 
         jButton_Start.setBackground(new java.awt.Color(102, 51, 0));
@@ -119,7 +124,7 @@ public class StartScreen extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         MainPanel.add(jPanel2);
@@ -132,11 +137,19 @@ public class StartScreen extends javax.swing.JFrame {
 
     private void jButton_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StartActionPerformed
         // TODO add your handling code here:
+         GameScreen game = new GameScreen();
+         game.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton_StartActionPerformed
 
     private void jTextField_IPAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IPAdressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_IPAdressActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

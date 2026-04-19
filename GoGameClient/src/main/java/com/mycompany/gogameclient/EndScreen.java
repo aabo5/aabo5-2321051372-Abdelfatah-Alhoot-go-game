@@ -74,6 +74,11 @@ public class EndScreen extends javax.swing.JFrame {
         jButton_Exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_Exit.setText("EXIT");
         jButton_Exit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ExitActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
 
         jButton_PlayAgain.setBackground(new java.awt.Color(102, 51, 0));
@@ -126,6 +131,11 @@ public class EndScreen extends javax.swing.JFrame {
     private void jButton_PlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PlayAgainActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_PlayAgainActionPerformed
+
+    private void jButton_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton_ExitActionPerformed
 
     /**
      * @param args the command line arguments

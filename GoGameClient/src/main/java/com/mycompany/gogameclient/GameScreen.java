@@ -61,6 +61,11 @@ public class GameScreen extends javax.swing.JFrame {
 
         jButton_ExitGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_ExitGame.setText("EXIT GAME");
+        jButton_ExitGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ExitGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_ButtonsBarLayout = new javax.swing.GroupLayout(jPanel_ButtonsBar);
         jPanel_ButtonsBar.setLayout(jPanel_ButtonsBarLayout);
@@ -216,6 +221,15 @@ public class GameScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_ExitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitGameActionPerformed
+        // TODO add your handling code here:
+        StartScreen start = new StartScreen();
+        start.setVisible(true);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jButton_ExitGameActionPerformed
 
     /**
      * @param args the command line arguments

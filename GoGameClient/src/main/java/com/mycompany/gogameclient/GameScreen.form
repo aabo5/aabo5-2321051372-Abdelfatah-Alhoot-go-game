@@ -158,6 +158,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="EXIT GAME"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ExitGameActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
