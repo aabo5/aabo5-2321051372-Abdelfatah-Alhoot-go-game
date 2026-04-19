@@ -43,7 +43,7 @@ public class StartScreen extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel_Title = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField_IPAdress = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton_Start = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,7 +52,6 @@ public class StartScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GO Game");
         setBackground(new java.awt.Color(249, 249, 249));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         MainPanel.setBackground(new java.awt.Color(102, 51, 0));
@@ -72,18 +71,18 @@ public class StartScreen extends javax.swing.JFrame {
         jLabel_Title.setText("GO GAME");
         jPanel1.add(jLabel_Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 40));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("127.0.0.1");
-        jTextField1.setToolTipText("");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_IPAdress.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField_IPAdress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField_IPAdress.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField_IPAdress.setText("127.0.0.1");
+        jTextField_IPAdress.setToolTipText("");
+        jTextField_IPAdress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField_IPAdress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField_IPAdressActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, 50));
+        jPanel1.add(jTextField_IPAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, 50));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("EXIT");
@@ -135,9 +134,9 @@ public class StartScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_StartActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField_IPAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_IPAdressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextField_IPAdressActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +173,6 @@ public class StartScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField_IPAdress;
     // End of variables declaration//GEN-END:variables
 }

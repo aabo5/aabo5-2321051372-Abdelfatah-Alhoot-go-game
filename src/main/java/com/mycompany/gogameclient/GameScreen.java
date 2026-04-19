@@ -31,8 +31,8 @@ public class GameScreen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel_SideBar = new javax.swing.JPanel();
         jPanel_ButtonsBar = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton_RestartGame = new javax.swing.JButton();
+        jButton_ExitGame = new javax.swing.JButton();
         jPanel_MovesBar = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1_Moves = new javax.swing.JList<>();
@@ -54,13 +54,13 @@ public class GameScreen extends javax.swing.JFrame {
 
         jPanel_ButtonsBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setBackground(new java.awt.Color(102, 51, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("RESTART GAME");
+        jButton_RestartGame.setBackground(new java.awt.Color(102, 51, 0));
+        jButton_RestartGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_RestartGame.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_RestartGame.setText("RESTART GAME");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("EXIT GAME");
+        jButton_ExitGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_ExitGame.setText("EXIT GAME");
 
         javax.swing.GroupLayout jPanel_ButtonsBarLayout = new javax.swing.GroupLayout(jPanel_ButtonsBar);
         jPanel_ButtonsBar.setLayout(jPanel_ButtonsBarLayout);
@@ -69,17 +69,17 @@ public class GameScreen extends javax.swing.JFrame {
             .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_RestartGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_ExitGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel_ButtonsBarLayout.setVerticalGroup(
             jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_RestartGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_ExitGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,7 +180,7 @@ public class GameScreen extends javax.swing.JFrame {
         jPanel_Board.setLayout(jPanel_BoardLayout);
         jPanel_BoardLayout.setHorizontalGroup(
             jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
         jPanel_BoardLayout.setVerticalGroup(
             jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,8 +243,8 @@ public class GameScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton_ExitGame;
+    private javax.swing.JButton jButton_RestartGame;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel_ConnectionStatus;

@@ -23,7 +23,7 @@ public class EndScreen extends javax.swing.JFrame {
         try{
             File fontStyle = new File ("src/main/resources/fonts/Retro-Gaming.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
-            jLabel_Title.setFont(font);
+            jLabel_Winner.setFont(font);
         } catch(Exception e){
         e.printStackTrace();
         }
@@ -42,9 +42,9 @@ public class EndScreen extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80), new java.awt.Dimension(80, 80));
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel_Title = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton_Start = new javax.swing.JButton();
+        jLabel_Winner = new javax.swing.JLabel();
+        jButton_Exit = new javax.swing.JButton();
+        jButton_PlayAgain = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel_Title1 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80), new java.awt.Dimension(80, 80));
@@ -66,27 +66,27 @@ public class EndScreen extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(337, 256));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_Title.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Title.setText("BLACK");
-        jPanel1.add(jLabel_Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 250, 40));
+        jLabel_Winner.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel_Winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Winner.setText("BLACK");
+        jPanel1.add(jLabel_Winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 250, 40));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("EXIT");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
+        jButton_Exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_Exit.setText("EXIT");
+        jButton_Exit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jButton_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 50));
 
-        jButton_Start.setBackground(new java.awt.Color(102, 51, 0));
-        jButton_Start.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_Start.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Start.setText("PLAY AGAIN");
-        jButton_Start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton_Start.addActionListener(new java.awt.event.ActionListener() {
+        jButton_PlayAgain.setBackground(new java.awt.Color(102, 51, 0));
+        jButton_PlayAgain.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_PlayAgain.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_PlayAgain.setText("PLAY AGAIN");
+        jButton_PlayAgain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_PlayAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_StartActionPerformed(evt);
+                jButton_PlayAgainActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 230, 50));
+        jPanel1.add(jButton_PlayAgain, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 230, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,9 +123,9 @@ public class EndScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StartActionPerformed
+    private void jButton_PlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PlayAgainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_StartActionPerformed
+    }//GEN-LAST:event_jButton_PlayAgainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,11 +156,11 @@ public class EndScreen extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton_Start;
+    private javax.swing.JButton jButton_Exit;
+    private javax.swing.JButton jButton_PlayAgain;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel_Title;
     private javax.swing.JLabel jLabel_Title1;
+    private javax.swing.JLabel jLabel_Winner;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
