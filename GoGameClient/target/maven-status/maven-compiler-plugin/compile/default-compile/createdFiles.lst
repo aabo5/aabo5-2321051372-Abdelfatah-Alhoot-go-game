@@ -1,5 +1,6 @@
 com\mycompany\gogameclient\GameScreen.class
 com\mycompany\gogameclient\StartScreen$3.class
+com\mycompany\gogameclient\functions.class
 com\mycompany\gogameclient\GoGameClient.class
 com\mycompany\gogameclient\GameScreen$1.class
 com\mycompany\gogameclient\EndScreen.class

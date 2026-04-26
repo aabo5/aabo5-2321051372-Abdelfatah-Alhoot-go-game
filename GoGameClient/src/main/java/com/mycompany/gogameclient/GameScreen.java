@@ -41,186 +41,249 @@ public class GameScreen extends javax.swing.JFrame {
         jLabel_ConnectionStatus = new javax.swing.JLabel();
         jLabel_CurrentTurn = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel_Board = new javax.swing.JPanel();
+        jPanel_Board = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GO Game");
-        setResizable(false);
+                int size = 9;
+                float cellWidth = (float) getWidth() / (size - 1);
+                float cellHeight = (float) getHeight() / (size - 1);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+                g.setColor(java.awt.Color.GRAY);
 
-        jPanel_SideBar.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel_SideBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+                for (int i = 0; i < size; i++) {
 
-        jPanel_ButtonsBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+                    int x = Math.round(i * cellWidth);
+                    int y = Math.round(i * cellHeight);
 
-        jButton_RestartGame.setBackground(new java.awt.Color(102, 51, 0));
-        jButton_RestartGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_RestartGame.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_RestartGame.setText("RESTART GAME");
+                    g.drawLine(x, 0, x, getHeight());
 
-        jButton_ExitGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_ExitGame.setText("EXIT GAME");
-        jButton_ExitGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ExitGameActionPerformed(evt);
-            }
-        });
+                    g.drawLine(0, y, getWidth(), y);
+                }
+            } }
+            ;
+            jLabel2 = new javax.swing.JLabel();
+            jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jPanel_ButtonsBarLayout = new javax.swing.GroupLayout(jPanel_ButtonsBar);
-        jPanel_ButtonsBar.setLayout(jPanel_ButtonsBarLayout);
-        jPanel_ButtonsBarLayout.setHorizontalGroup(
-            jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_RestartGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_ExitGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel_ButtonsBarLayout.setVerticalGroup(
-            jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_RestartGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_ExitGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("GO Game");
+            setResizable(false);
 
-        jPanel_MovesBar.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel_MovesBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+            jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jScrollPane1.setViewportView(jList1_Moves);
+            jPanel_SideBar.setBackground(new java.awt.Color(204, 204, 204));
+            jPanel_SideBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 51, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Player Moves");
+            jPanel_ButtonsBar.setBackground(new java.awt.Color(255, 255, 255));
+            jPanel_ButtonsBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel_MovesBarLayout = new javax.swing.GroupLayout(jPanel_MovesBar);
-        jPanel_MovesBar.setLayout(jPanel_MovesBarLayout);
-        jPanel_MovesBarLayout.setHorizontalGroup(
-            jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MovesBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel_MovesBarLayout.setVerticalGroup(
-            jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MovesBarLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+            jButton_RestartGame.setBackground(new java.awt.Color(102, 51, 0));
+            jButton_RestartGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jButton_RestartGame.setForeground(new java.awt.Color(255, 255, 255));
+            jButton_RestartGame.setText("RESTART GAME");
+            jButton_RestartGame.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+                javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                    javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+                )
+            ));
 
-        jPanel_StatusBar.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel_StatusBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+            jButton_ExitGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jButton_ExitGame.setText("EXIT GAME");
+            jButton_ExitGame.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+                javax.swing.BorderFactory.createCompoundBorder(
+                    javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                    javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+                )
+            ));
+            jButton_ExitGame.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton_ExitGameActionPerformed(evt);
+                }
+            });
 
-        jLabel_ConnectionStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel_ConnectionStatus.setForeground(new java.awt.Color(51, 153, 0));
-        jLabel_ConnectionStatus.setText("Connection : Connected");
+            javax.swing.GroupLayout jPanel_ButtonsBarLayout = new javax.swing.GroupLayout(jPanel_ButtonsBar);
+            jPanel_ButtonsBar.setLayout(jPanel_ButtonsBarLayout);
+            jPanel_ButtonsBarLayout.setHorizontalGroup(
+                jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton_RestartGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_ExitGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+            );
+            jPanel_ButtonsBarLayout.setVerticalGroup(
+                jPanel_ButtonsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_ButtonsBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jButton_RestartGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton_ExitGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
 
-        jLabel_CurrentTurn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel_CurrentTurn.setText("Current Turn : Black");
+            jPanel_MovesBar.setBackground(new java.awt.Color(255, 255, 255));
+            jPanel_MovesBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 51, 0)));
+            jPanel_MovesBar.setForeground(new java.awt.Color(102, 51, 0));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Match Status :");
+            jScrollPane1.setViewportView(jList1_Moves);
 
-        javax.swing.GroupLayout jPanel_StatusBarLayout = new javax.swing.GroupLayout(jPanel_StatusBar);
-        jPanel_StatusBar.setLayout(jPanel_StatusBarLayout);
-        jPanel_StatusBarLayout.setHorizontalGroup(
-            jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_StatusBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_CurrentTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel_ConnectionStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel_StatusBarLayout.setVerticalGroup(
-            jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_StatusBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_ConnectionStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_CurrentTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+            jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+            jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel1.setText("Player Moves");
 
-        javax.swing.GroupLayout jPanel_SideBarLayout = new javax.swing.GroupLayout(jPanel_SideBar);
-        jPanel_SideBar.setLayout(jPanel_SideBarLayout);
-        jPanel_SideBarLayout.setHorizontalGroup(
-            jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_SideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_MovesBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_ButtonsBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_StatusBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel_SideBarLayout.setVerticalGroup(
-            jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_SideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel_StatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jPanel_MovesBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel_ButtonsBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+            javax.swing.GroupLayout jPanel_MovesBarLayout = new javax.swing.GroupLayout(jPanel_MovesBar);
+            jPanel_MovesBar.setLayout(jPanel_MovesBarLayout);
+            jPanel_MovesBarLayout.setHorizontalGroup(
+                jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_MovesBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+            );
+            jPanel_MovesBarLayout.setVerticalGroup(
+                jPanel_MovesBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_MovesBarLayout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
 
-        jPanel_Board.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel_Board.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+            jPanel_StatusBar.setBackground(new java.awt.Color(255, 255, 255));
+            jPanel_StatusBar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 51, 0), 1, true));
 
-        javax.swing.GroupLayout jPanel_BoardLayout = new javax.swing.GroupLayout(jPanel_Board);
-        jPanel_Board.setLayout(jPanel_BoardLayout);
-        jPanel_BoardLayout.setHorizontalGroup(
-            jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
-        );
-        jPanel_BoardLayout.setVerticalGroup(
-            jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+            jLabel_ConnectionStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jLabel_ConnectionStatus.setForeground(new java.awt.Color(51, 153, 0));
+            jLabel_ConnectionStatus.setText("Connection : Connected");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel_Board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_SideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_Board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+            jLabel_CurrentTurn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jLabel_CurrentTurn.setText("Current Turn : Black");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+            jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            jLabel4.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel4.setText("Match Status :");
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            javax.swing.GroupLayout jPanel_StatusBarLayout = new javax.swing.GroupLayout(jPanel_StatusBar);
+            jPanel_StatusBar.setLayout(jPanel_StatusBarLayout);
+            jPanel_StatusBarLayout.setHorizontalGroup(
+                jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_StatusBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel_CurrentTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_ConnectionStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+            );
+            jPanel_StatusBarLayout.setVerticalGroup(
+                jPanel_StatusBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_StatusBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel_ConnectionStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel_CurrentTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+
+            javax.swing.GroupLayout jPanel_SideBarLayout = new javax.swing.GroupLayout(jPanel_SideBar);
+            jPanel_SideBar.setLayout(jPanel_SideBarLayout);
+            jPanel_SideBarLayout.setHorizontalGroup(
+                jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_SideBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel_MovesBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_ButtonsBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_StatusBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+            );
+            jPanel_SideBarLayout.setVerticalGroup(
+                jPanel_SideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_SideBarLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel_StatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel_MovesBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel_ButtonsBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            jPanel_Board.setBackground(new java.awt.Color(255, 204, 153));
+            jPanel_Board.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+            jPanel_Board.setPreferredSize(new java.awt.Dimension(550, 550));
+
+            javax.swing.GroupLayout jPanel_BoardLayout = new javax.swing.GroupLayout(jPanel_Board);
+            jPanel_Board.setLayout(jPanel_BoardLayout);
+            jPanel_BoardLayout.setHorizontalGroup(
+                jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+            );
+            jPanel_BoardLayout.setVerticalGroup(
+                jPanel_BoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 544, Short.MAX_VALUE)
+            );
+
+            jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+            jLabel2.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel2.setText("> Your Turn");
+
+            jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+            jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel5.setText("GO Game");
+            jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(47, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel_Board, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                    .addGap(48, 48, 48)
+                    .addComponent(jPanel_SideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            );
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel_SideBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(8, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel_Board, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addGap(18, 18, 18))
+            );
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ExitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitGameActionPerformed
         // TODO add your handling code here:
@@ -260,7 +323,9 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButton_ExitGame;
     private javax.swing.JButton jButton_RestartGame;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_ConnectionStatus;
     private javax.swing.JLabel jLabel_CurrentTurn;
     private javax.swing.JList<String> jList1_Moves;

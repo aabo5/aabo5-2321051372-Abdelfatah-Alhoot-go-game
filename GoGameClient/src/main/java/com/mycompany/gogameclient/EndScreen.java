@@ -73,7 +73,13 @@ public class EndScreen extends javax.swing.JFrame {
 
         jButton_Exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_Exit.setText("EXIT");
-        jButton_Exit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_Exit.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton_Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ExitActionPerformed(evt);
@@ -85,7 +91,13 @@ public class EndScreen extends javax.swing.JFrame {
         jButton_PlayAgain.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_PlayAgain.setForeground(new java.awt.Color(255, 255, 255));
         jButton_PlayAgain.setText("PLAY AGAIN");
-        jButton_PlayAgain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_PlayAgain.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton_PlayAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_PlayAgainActionPerformed(evt);

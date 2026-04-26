@@ -128,10 +128,8 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="EXIT"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="javax.swing.BorderFactory.createCompoundBorder(&#xa;    javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),&#xa;    javax.swing.BorderFactory.createCompoundBorder(&#xa;        javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),&#xa;        javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)&#xa;    )&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -155,10 +153,8 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="PLAY AGAIN"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder/>
-                      </Border>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="javax.swing.BorderFactory.createCompoundBorder(&#xa;    javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),&#xa;    javax.swing.BorderFactory.createCompoundBorder(&#xa;        javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),&#xa;        javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)&#xa;    )&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>

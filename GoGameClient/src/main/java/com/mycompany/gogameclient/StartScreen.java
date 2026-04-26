@@ -54,15 +54,15 @@ public class StartScreen extends javax.swing.JFrame {
         setBackground(new java.awt.Color(249, 249, 249));
         setResizable(false);
 
-        MainPanel.setBackground(new java.awt.Color(102, 51, 0));
+        MainPanel.setBackground(new java.awt.Color(255, 204, 153));
         MainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         MainPanel.setLayout(new javax.swing.BoxLayout(MainPanel, javax.swing.BoxLayout.LINE_AXIS));
         MainPanel.add(filler1);
 
-        jPanel2.setBackground(new java.awt.Color(102, 51, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.setPreferredSize(new java.awt.Dimension(337, 256));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -76,7 +76,7 @@ public class StartScreen extends javax.swing.JFrame {
         jTextField_IPAdress.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField_IPAdress.setText("127.0.0.1");
         jTextField_IPAdress.setToolTipText("");
-        jTextField_IPAdress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField_IPAdress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jTextField_IPAdress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_IPAdressActionPerformed(evt);
@@ -86,7 +86,13 @@ public class StartScreen extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("EXIT");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -98,7 +104,13 @@ public class StartScreen extends javax.swing.JFrame {
         jButton_Start.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_Start.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Start.setText("START");
-        jButton_Start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton_Start.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton_Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_StartActionPerformed(evt);
