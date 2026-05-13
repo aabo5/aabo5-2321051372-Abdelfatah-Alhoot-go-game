@@ -5,9 +5,16 @@
     <artifactId>GoGameServer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.mycompany</groupId>
+            <artifactId>GoGameClient</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>com.mycompany.gogameserver.GoGameServer</exec.mainClass>
+        <exec.mainClass>com.mycompany.gogameserver.GoServer</exec.mainClass>
     </properties>
 </project>

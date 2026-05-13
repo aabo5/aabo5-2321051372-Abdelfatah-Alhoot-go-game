@@ -1,2 +1,26 @@
+# Maven build output
 /GoGameClient/target/
 /GoGameServer/target/
+
+# NetBeans IDE
+nbproject/private/
+nb-configuration.xml
+build/
+dist/
+nbbuild/
+nbdist/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

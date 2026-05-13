@@ -1,7 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * GoGameClient.java — Application entry point.
+ * Launches the StartScreen so the player can enter
+ * a server IP and connect to a Go game match.
  */
-
 package com.mycompany.gogameclient;
 
 /**
@@ -11,6 +12,7 @@ package com.mycompany.gogameclient;
 public class GoGameClient {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        /* Launch the Start Screen on the Event Dispatch Thread */
+        java.awt.EventQueue.invokeLater(() -> new StartScreen().setVisible(true));
     }
 }
