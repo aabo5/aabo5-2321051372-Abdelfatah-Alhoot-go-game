@@ -27,13 +27,8 @@ public class StartScreen extends javax.swing.JFrame {
      */
     public StartScreen() {
         initComponents();
-        try {
-            File fontStyle = new File("src/main/resources/fonts/Retro-Gaming.ttf");
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
-            jLabel_Title.setFont(font);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        jLabel_Title.setFont(jLabel_Title.getFont().deriveFont(44f));
+        FontUtil.setCustomFont(this);
     }
 
     /**

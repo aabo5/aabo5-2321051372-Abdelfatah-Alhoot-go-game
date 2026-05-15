@@ -27,13 +27,8 @@ public class EndScreen extends javax.swing.JFrame {
      */
     public EndScreen() {
         initComponents();
-        try {
-            File fontStyle = new File("src/main/resources/fonts/Retro-Gaming.ttf");
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
-            jLabel_Winner.setFont(font);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        jLabel_Winner.setFont(jLabel_Winner.getFont().deriveFont(44f));
+        FontUtil.setCustomFont(this);
     }
 
     /**
@@ -45,13 +40,8 @@ public class EndScreen extends javax.swing.JFrame {
      */
     public EndScreen(NetworkClient client, String winner, String myColor) {
         initComponents();
-        try {
-            File fontStyle = new File("src/main/resources/fonts/Retro-Gaming.ttf");
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
-            jLabel_Winner.setFont(font);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        jLabel_Winner.setFont(jLabel_Winner.getFont().deriveFont(44f));
+        FontUtil.setCustomFont(this);
 
         this.networkClient = client;
         this.myColor = myColor;

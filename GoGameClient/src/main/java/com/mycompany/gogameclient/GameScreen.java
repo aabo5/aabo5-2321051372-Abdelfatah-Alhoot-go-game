@@ -25,6 +25,11 @@ public class GameScreen extends javax.swing.JFrame {
     private volatile boolean isMyTurn = false;
     private int moveCount = 0;
 
+    // These store our custom pictures for the mouse cursor
+    private java.awt.Cursor cursorBlack = java.awt.Cursor.getDefaultCursor();
+    private java.awt.Cursor cursorWhite = java.awt.Cursor.getDefaultCursor();
+    private java.awt.Cursor cursorEmpty = java.awt.Cursor.getDefaultCursor();
+
     /**
      * Creates new form GameScreen (default — for NetBeans designer)
      */
@@ -33,6 +38,8 @@ public class GameScreen extends javax.swing.JFrame {
         game = new GameLogic(9);
         movesModel = new javax.swing.DefaultListModel<>();
         jList1_Moves.setModel(movesModel);
+        FontUtil.setCustomFont(this);
+        initCursors();
     }
 
     /**
@@ -46,6 +53,8 @@ public class GameScreen extends javax.swing.JFrame {
         game = new GameLogic(9);
         movesModel = new javax.swing.DefaultListModel<>();
         jList1_Moves.setModel(movesModel);
+        FontUtil.setCustomFont(this);
+        initCursors();
 
         this.networkClient = client;
         this.myColor = color;
@@ -74,8 +83,58 @@ public class GameScreen extends javax.swing.JFrame {
     private void updateTurnIndicator() {
         if (isMyTurn) {
             jLabel2.setText("> Your Turn (" + myColor + ")");
+            
+            // If it is my turn, change the mouse cursor to my stone color
+            if ("BLACK".equals(myColor)) {
+                jPanel_Board.setCursor(cursorBlack);
+            } else {
+                jPanel_Board.setCursor(cursorWhite);
+            }
         } else {
             jLabel2.setText("  Opponent's Turn");
+            // When it's the opponent's turn, make my hand empty
+            jPanel_Board.setCursor(cursorEmpty);
+        }
+    }
+
+    private void initCursors() {
+        try {
+            // Toolkit helps us make custom cursors
+            java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
+            
+            // We want the cursor to click exactly in the middle of the 32x32 image (16, 16)
+            java.awt.Point middle = new java.awt.Point(16, 16);
+
+            // 1. Load the Black Hand picture
+            java.io.File blackFile = new java.io.File("resources/images/hand_black.png");
+            if (blackFile.exists()) {
+                // Read the image
+                java.awt.Image blackImg = javax.imageio.ImageIO.read(blackFile);
+                // Make it smaller (32x32 pixels) so it looks good as a cursor
+                java.awt.Image smallBlack = blackImg.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH);
+                // Save it to our variable
+                cursorBlack = toolkit.createCustomCursor(smallBlack, middle, "black");
+            }
+
+            // 2. Load the White Hand picture
+            java.io.File whiteFile = new java.io.File("resources/images/hand_white.png");
+            if (whiteFile.exists()) {
+                java.awt.Image whiteImg = javax.imageio.ImageIO.read(whiteFile);
+                java.awt.Image smallWhite = whiteImg.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH);
+                cursorWhite = toolkit.createCustomCursor(smallWhite, middle, "white");
+            }
+
+            // 3. Load the Empty Hand picture
+            java.io.File emptyFile = new java.io.File("resources/images/hand_empty.png");
+            if (emptyFile.exists()) {
+                java.awt.Image emptyImg = javax.imageio.ImageIO.read(emptyFile);
+                java.awt.Image smallEmpty = emptyImg.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH);
+                cursorEmpty = toolkit.createCustomCursor(smallEmpty, middle, "empty");
+            }
+
+        } catch (Exception e) {
+            // If something goes wrong, just print the error and use the normal mouse cursor
+            System.out.println("Could not load cursor images: " + e.getMessage());
         }
     }
 
@@ -104,6 +163,7 @@ public class GameScreen extends javax.swing.JFrame {
 
         /* send the move request to the server (server validates) */
         networkClient.sendMove(i, j);
+        jPanel_Board.setCursor(cursorEmpty);
     }
 
     /* ========================================= */
