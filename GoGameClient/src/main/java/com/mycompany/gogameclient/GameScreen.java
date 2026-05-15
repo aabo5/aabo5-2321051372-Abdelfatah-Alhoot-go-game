@@ -558,9 +558,6 @@ public class GameScreen extends javax.swing.JFrame {
         handleClick(evt);
     }// GEN-LAST:event_jPanel_BoardMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_ExitGame;

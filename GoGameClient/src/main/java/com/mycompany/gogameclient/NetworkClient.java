@@ -1,6 +1,4 @@
-/*
- * NetworkClient.java — Manages the TCP socket connection to GoServer.
- */
+
 package com.mycompany.gogameclient;
 
 import java.io.BufferedReader;
@@ -30,10 +28,10 @@ public class NetworkClient {
         /** Called to indicate whose turn it is (BLACK / WHITE) */
         void onTurnChange(String whoseTurn);
 
-        /** Called when a move was accepted — for move-history display */
+        /** Called when a move was accepted for move-history display */
         void onMoveOk(int row, int col, String color);
 
-        /** Called when a pass was accepted — for move-history display */
+        /** Called when a pass was accepted for move-history display */
         void onPassOk(String color);
 
         /** Called when the client's move was rejected by the server */
@@ -112,7 +110,7 @@ public class NetworkClient {
                 parseAndDispatch(line);
             }
         } catch (IOException e) {
-            // Socket closed — notify listener if still active
+            // Socket closed notify listener if still active
             if (running && listener != null) {
                 listener.onOpponentDisconnected();
             }
