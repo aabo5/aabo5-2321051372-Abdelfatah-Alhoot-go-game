@@ -83,7 +83,7 @@ public class GameScreen extends javax.swing.JFrame {
     private void updateTurnIndicator() {
         if (isMyTurn) {
             jLabel2.setText("> Your Turn (" + myColor + ")");
-            
+
             // If it is my turn, change the mouse cursor to my stone color
             if ("BLACK".equals(myColor)) {
                 jPanel_Board.setCursor(cursorBlack);
@@ -101,7 +101,7 @@ public class GameScreen extends javax.swing.JFrame {
         try {
             // Toolkit helps us make custom cursors
             java.awt.Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();
-            
+
             // We want the cursor to click exactly in the middle of the 32x32 image (16, 16)
             java.awt.Point middle = new java.awt.Point(16, 16);
 
@@ -256,6 +256,7 @@ public class GameScreen extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -337,7 +338,7 @@ public class GameScreen extends javax.swing.JFrame {
         jButton_RestartGame.setBackground(new java.awt.Color(102, 51, 0));
         jButton_RestartGame.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton_RestartGame.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_RestartGame.setText("RESTART GAME");
+        jButton_RestartGame.setText("PASS");
         jButton_RestartGame.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                 javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
                 javax.swing.BorderFactory.createCompoundBorder(
