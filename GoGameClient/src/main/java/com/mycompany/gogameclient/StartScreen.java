@@ -25,12 +25,11 @@ public class StartScreen extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         MainPanel = new javax.swing.JPanel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80),
-                new java.awt.Dimension(80, 80));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80), new java.awt.Dimension(80, 80));
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel_Title = new javax.swing.JLabel();
@@ -38,8 +37,7 @@ public class StartScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton_Start = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80),
-                new java.awt.Dimension(80, 80));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(300, 80), new java.awt.Dimension(80, 80));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GO Game");
@@ -66,7 +64,7 @@ public class StartScreen extends javax.swing.JFrame {
         jTextField_IPAdress.setBackground(new java.awt.Color(204, 204, 204));
         jTextField_IPAdress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField_IPAdress.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField_IPAdress.setText("127.0.0.1");
+        jTextField_IPAdress.setText("13.60.172.218");
         jTextField_IPAdress.setToolTipText("");
         jTextField_IPAdress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jTextField_IPAdress.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +77,12 @@ public class StartScreen extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("EXIT");
         jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-                javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
-                javax.swing.BorderFactory.createCompoundBorder(
-                        javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
-                        javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16))));
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -95,10 +95,12 @@ public class StartScreen extends javax.swing.JFrame {
         jButton_Start.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Start.setText("START");
         jButton_Start.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-                javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
-                javax.swing.BorderFactory.createCompoundBorder(
-                        javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
-                        javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16))));
+            javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 4, java.awt.Color.BLACK),
+            javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(java.awt.Color.BLACK, 2),
+                javax.swing.BorderFactory.createEmptyBorder(8, 16, 8, 16)
+            )
+        ));
         jButton_Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_StartActionPerformed(evt);
@@ -113,19 +115,19 @@ public class StartScreen extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
         jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         MainPanel.add(jPanel2);
         MainPanel.add(filler2);
