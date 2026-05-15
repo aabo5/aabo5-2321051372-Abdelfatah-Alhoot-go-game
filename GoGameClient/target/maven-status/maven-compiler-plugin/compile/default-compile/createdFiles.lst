@@ -16,3 +16,4 @@ com\mycompany\gogameclient\StartScreen$2.class
 com\mycompany\gogameclient\EndScreen$2.class
 com\mycompany\gogameclient\EndScreen$1.class
 com\mycompany\gogameclient\NetworkClient$ServerMessageListener.class
+com\mycompany\gogameclient\FontUtil.class

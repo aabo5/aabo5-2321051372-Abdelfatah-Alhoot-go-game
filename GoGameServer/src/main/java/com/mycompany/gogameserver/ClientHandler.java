@@ -16,6 +16,7 @@ public class ClientHandler implements Runnable {
     private GameSession session;
     private final int playerColor; // GameLogic.BLACK or GameLogic.WHITE
     private final String playerName; // "BLACK" or "WHITE"
+    private boolean isRunning;
 
     // Constructor
     public ClientHandler(Socket socket, int playerColor) throws IOException {
@@ -24,6 +25,7 @@ public class ClientHandler implements Runnable {
         this.playerName = (playerColor == GameLogic.BLACK) ? "BLACK" : "WHITE";
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new PrintWriter(socket.getOutputStream(), true);
+        this.isRunning = true;
         
         // Tell this client which color they are immediately upon connection
         sendMessage("WELCOME:" + playerName);
@@ -43,10 +45,25 @@ public class ClientHandler implements Runnable {
     public String getPlayerName() {
         return playerName;
     }
+    
+    // Helper to let the server know if this client disconnected while waiting
+    public boolean isSocketClosed() {
+        return socket.isClosed();
+    }
 
     // Send a message to this client
     public void sendMessage(String msg) {
         out.println(msg);
+    }
+    
+    // Disconnect safely
+    public void disconnect() {
+        isRunning = false;
+        try {
+            if (!socket.isClosed()) {
+                socket.close();
+            }
+        } catch (IOException ignored) {}
     }
 
     // Main read loop runs on its own thread
@@ -54,7 +71,7 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             String line;
-            while ((line = in.readLine()) != null) {
+            while (isRunning && (line = in.readLine()) != null) {
 
                 System.out.println("[Server] " + playerName + " >> " + line);
 
@@ -78,10 +95,8 @@ public class ClientHandler implements Runnable {
             if (session != null) {
                 session.handleDisconnect(this);
             }
-            try {
-                socket.close();
-            } catch (IOException ignored) {
-            }
+            disconnect();
+            System.out.println("[Server] " + playerName + " thread cleaned up.");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 A fully-functional, networked, multiplayer Go (Weiqi/Baduk) game built entirely in Java. This project was developed as a university submission to demonstrate client-server architecture, multithreading, and GUI application design.
 
-## 🌟 Features
+##  Features
 
 *   **Multiplayer Networking**: Play against opponents in real-time over TCP sockets.
 *   **Unlimited Sessions**: The server is designed to handle unlimited concurrent game sessions (pairs of 2 players) simultaneously.
@@ -14,7 +14,7 @@ A fully-functional, networked, multiplayer Go (Weiqi/Baduk) game built entirely 
 *   **Game Flow**: Support for passing turns, automatically detecting game over (two consecutive passes), and a voting system for rematches.
 *   **Custom UI**: A retro-styled graphical interface built using the NetBeans Swing GUI Designer, featuring custom retro fonts and a hand-drawn grid.
 
-## 🏗️ Project Architecture
+##  Project Architecture
 
 The repository is structured as a Maven project containing two modules:
 
@@ -43,7 +43,7 @@ The client and server communicate via a custom String-based protocol over TCP:
 *   `RESTART_REQ` -> Client requests a rematch.
 *   `GAME_OVER:<WINNER>` -> Server announces the end of the game.
 
-## 🚀 How to Run
+##  How to Run
 
 1.  **Start the Server:**
     *   Open the `GoGameServer` module in your IDE (like NetBeans or IntelliJ).
@@ -56,9 +56,3 @@ The client and server communicate via a custom String-based protocol over TCP:
     *   In both client windows, leave the IP address as `localhost` (or enter the IP if running on different machines) and click **Connect**.
     *   The server will pair the two windows into a session, and the game will begin!
 
-## 🛠️ Built With
-
-*   **Java 11+**
-*   **Maven** (Dependency and Build Management)
-*   **Java Swing** (UI Framework)
-*   **NetBeans GUI Builder** (For `.form` layout files)
