@@ -1,30 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.gogameclient;
 
 import java.awt.Font;
 import java.io.File;
 
-/**
- *
- * @author abdel
- */
 public class StartScreen extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger
             .getLogger(StartScreen.class.getName());
 
-    /* ========================================= */
-    /* Networking fields */
-    /* ========================================= */
+    // Networking fields
     private NetworkClient networkClient;
-    private String myColor; /* assigned by server: "BLACK" or "WHITE" */
+    private String myColor; // assigned by server: "BLACK" or "WHITE"
 
-    /**
-     * Creates new form StartScreen
-     */
     public StartScreen() {
         initComponents();
         jLabel_Title.setFont(jLabel_Title.getFont().deriveFont(44f));
@@ -149,7 +136,7 @@ public class StartScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_StartActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_StartActionPerformed
-        /* --- Networking: connect to GoServer --- */
+        // Connect to the server using the entered IP
         String ip = jTextField_IPAdress.getText().trim();
         if (ip.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -158,11 +145,11 @@ public class StartScreen extends javax.swing.JFrame {
             return;
         }
 
-        /* disable the button while connecting */
+        // Disable button while we try to connect
         jButton_Start.setEnabled(false);
         jButton_Start.setText("CONNECTING...");
 
-        /* attempt connection on a background thread */
+        // Run connection in background so UI doesn't freeze
         new Thread(() -> {
             try {
                 networkClient = new NetworkClient(ip, 5000);
@@ -176,23 +163,17 @@ public class StartScreen extends javax.swing.JFrame {
                     jButton_Start.setText("START");
                 });
             }
-        }, "Connect-Thread").start();
+        }).start();
     }// GEN-LAST:event_jButton_StartActionPerformed
 
     private void jTextField_IPAdressActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField_IPAdressActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_jTextField_IPAdressActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }// GEN-LAST:event_jButton1ActionPerformed
 
-    /* ========================================= */
-    /* Lobby listener — waits for color assign- */
-    /* ment and GAME_STARTED before transitioning */
-    /* to the GameScreen. */
-    /* ========================================= */
+    // Waits for the server to assign our color and start the game
     private class LobbyListener implements NetworkClient.ServerMessageListener {
 
         @Override
@@ -203,7 +184,7 @@ public class StartScreen extends javax.swing.JFrame {
 
         @Override
         public void onGameStarted() {
-            /* both players connected — open the game screen */
+            // Both players joined, open the actual game board
             javax.swing.SwingUtilities.invokeLater(() -> {
                 GameScreen gameScreen = new GameScreen(networkClient, myColor);
                 gameScreen.setVisible(true);

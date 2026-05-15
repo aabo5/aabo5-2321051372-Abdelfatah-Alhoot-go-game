@@ -6,9 +6,11 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 
+// Utility class to load and apply our custom retro font
 public class FontUtil {
     private static Font customFont;
 
+    // Load the custom font from the resources folder
     public static void loadFont() {
         if (customFont == null) {
             try {
@@ -32,11 +34,12 @@ public class FontUtil {
                     System.err.println("Could not find Retro-Gaming.ttf in any of the expected locations.");
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("Error loading font: " + e.getMessage());
             }
         }
     }
 
+    // Apply the custom font to a UI component and all its children
     public static void setCustomFont(Component component) {
         if (customFont == null) {
             loadFont();

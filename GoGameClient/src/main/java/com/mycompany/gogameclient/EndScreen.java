@@ -16,28 +16,18 @@ public class EndScreen extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger
             .getLogger(EndScreen.class.getName());
 
-    /* ========================================= */
-    /* Networking fields */
-    /* ========================================= */
+    // Networking fields
     private NetworkClient networkClient;
     private String myColor;
 
-    /**
-     * Creates new form StartScreen (default — for NetBeans designer)
-     */
+    // Default constructor for NetBeans designer
     public EndScreen() {
         initComponents();
         jLabel_Winner.setFont(jLabel_Winner.getFont().deriveFont(44f));
         FontUtil.setCustomFont(this);
     }
 
-    /**
-     * Networked constructor — called when game ends.
-     * 
-     * @param client  the active NetworkClient connection
-     * @param winner  "BLACK", "WHITE", or "DRAW"
-     * @param myColor this player's color
-     */
+    // Constructor called when the game ends
     public EndScreen(NetworkClient client, String winner, String myColor) {
         initComponents();
         jLabel_Winner.setFont(jLabel_Winner.getFont().deriveFont(44f));
@@ -46,18 +36,16 @@ public class EndScreen extends javax.swing.JFrame {
         this.networkClient = client;
         this.myColor = myColor;
 
-        /* display the winner */
+        // Show the winner
         jLabel_Winner.setText(winner);
 
-        /* register listener for restart flow */
+        // Listen for restart events
         if (networkClient != null) {
             networkClient.setListener(new EndScreenListener());
         }
     }
 
-    /* ========================================= */
-    /* Network listener for the end/restart phase */
-    /* ========================================= */
+    // Listens for network messages after the game is over
     private class EndScreenListener implements NetworkClient.ServerMessageListener {
         @Override
         public void onWelcome(String color) {
@@ -65,7 +53,7 @@ public class EndScreen extends javax.swing.JFrame {
 
         @Override
         public void onGameStarted() {
-            /* both players accepted rematch — return to game */
+            // Both players accepted rematch, go back to game
             javax.swing.SwingUtilities.invokeLater(() -> {
                 GameScreen gameScreen = new GameScreen(networkClient, myColor);
                 gameScreen.setVisible(true);
@@ -225,7 +213,7 @@ public class EndScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_PlayAgainActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_PlayAgainActionPerformed
-        /* send restart request to server and wait for opponent */
+        // Send restart request to server and wait
         if (networkClient != null) {
             networkClient.sendRestart();
             jButton_PlayAgain.setEnabled(false);
@@ -235,7 +223,7 @@ public class EndScreen extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton_PlayAgainActionPerformed
 
     private void jButton_ExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_ExitActionPerformed
-        /* disconnect and exit */
+        // Disconnect and close the application
         if (networkClient != null) {
             networkClient.disconnect();
         }

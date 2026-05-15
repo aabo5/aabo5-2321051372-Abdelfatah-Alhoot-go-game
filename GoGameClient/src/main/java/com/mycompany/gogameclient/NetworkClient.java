@@ -1,9 +1,5 @@
 /*
  * NetworkClient.java — Manages the TCP socket connection to GoServer.
- * Runs a background listener thread that reads server messages and
- * dispatches them to the currently registered ServerMessageListener.
- * All listener callbacks fire on the network thread; the UI classes
- * are responsible for wrapping updates in SwingUtilities.invokeLater().
  */
 package com.mycompany.gogameclient;
 
@@ -20,9 +16,7 @@ import java.net.Socket;
  */
 public class NetworkClient {
 
-    /* ========================================= */
-    /* Callback interface for server messages */
-    /* ========================================= */
+    // Callback interface for server messages
     public interface ServerMessageListener {
         /** Called when server assigns a color (BLACK / WHITE) */
         void onWelcome(String color);
@@ -55,9 +49,7 @@ public class NetworkClient {
         void onMessage(String text);
     }
 
-    /* ========================================= */
-    /* Fields */
-    /* ========================================= */
+    // Fields
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
@@ -65,32 +57,25 @@ public class NetworkClient {
     private Thread listenerThread;
     private volatile boolean running;
 
-    /* ========================================= */
-    /* Constructor — connects to the server */
-    /* Throws IOException if connection fails */
-    /* ========================================= */
+    // Connects to the server
     public NetworkClient(String ip, int port) throws IOException {
         socket = new Socket(ip, port);
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         running = true;
 
-        /* background daemon thread that reads server messages */
+        // Background thread to read server messages
         listenerThread = new Thread(this::listenLoop, "NetworkClient-Listener");
         listenerThread.setDaemon(true);
         listenerThread.start();
     }
 
-    /* ========================================= */
-    /* Set / swap the active message listener */
-    /* ========================================= */
+    // Set active message listener
     public void setListener(ServerMessageListener newListener) {
         this.listener = newListener;
     }
 
-    /* ========================================= */
-    /* Outgoing message methods */
-    /* ========================================= */
+    // Outgoing message methods
 
     /** Request placing a stone at (row, col) */
     public void sendMove(int row, int col) {
@@ -115,15 +100,11 @@ public class NetworkClient {
                 socket.close();
             }
         } catch (IOException e) {
-            /* best-effort close */
+            // Best-effort close
         }
     }
 
-    /* ========================================= */
-    /* Background listener loop */
-    /* Reads one line at a time and dispatches */
-    /* to the registered ServerMessageListener */
-    /* ========================================= */
+    // Background listener loop to read messages
     private void listenLoop() {
         try {
             String line;
@@ -131,7 +112,7 @@ public class NetworkClient {
                 parseAndDispatch(line);
             }
         } catch (IOException e) {
-            /* socket closed — notify listener if still active */
+            // Socket closed — notify listener if still active
             if (running && listener != null) {
                 listener.onOpponentDisconnected();
             }
@@ -140,21 +121,7 @@ public class NetworkClient {
         }
     }
 
-    /* ========================================= */
-    /* Protocol parser */
-    /*                                           */
-    /* Messages from server: */
-    /* WELCOME:BLACK | WELCOME:WHITE */
-    /* GAME_STARTED */
-    /* UPDATE:<81-char board> */
-    /* TURN:BLACK | TURN:WHITE */
-    /* MOVE_OK:r,c,COLOR */
-    /* PASS_OK:COLOR */
-    /* INVALID_MOVE */
-    /* GAME_OVER:BLACK | WHITE | DRAW */
-    /* OPPONENT_DISCONNECTED */
-    /* MESSAGE:text */
-    /* ========================================= */
+    // Parse messages from the server
     private void parseAndDispatch(String line) {
         if (listener == null) {
             return;
@@ -173,7 +140,7 @@ public class NetworkClient {
             listener.onTurnChange(line.substring(5));
 
         } else if (line.startsWith("MOVE_OK:")) {
-            /* format: MOVE_OK:r,c,COLOR */
+            // format: MOVE_OK:r,c,COLOR
             String[] parts = line.substring(8).split(",");
             int r = Integer.parseInt(parts[0]);
             int c = Integer.parseInt(parts[1]);

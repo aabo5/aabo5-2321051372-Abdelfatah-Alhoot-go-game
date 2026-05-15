@@ -17,11 +17,9 @@ public class GameScreen extends javax.swing.JFrame {
     private int[][] board = new int[9][9];
     private int currentPlayer = 1;
 
-    /* ========================================= */
-    /* Networking fields */
-    /* ========================================= */
+    // Networking fields
     private NetworkClient networkClient;
-    private String myColor; /* "BLACK" or "WHITE" */
+    private String myColor; // "BLACK" or "WHITE"
     private volatile boolean isMyTurn = false;
     private int moveCount = 0;
 
@@ -30,9 +28,7 @@ public class GameScreen extends javax.swing.JFrame {
     private java.awt.Cursor cursorWhite = java.awt.Cursor.getDefaultCursor();
     private java.awt.Cursor cursorEmpty = java.awt.Cursor.getDefaultCursor();
 
-    /**
-     * Creates new form GameScreen (default — for NetBeans designer)
-     */
+    // Default constructor for NetBeans designer
     public GameScreen() {
         initComponents();
         game = new GameLogic(9);
@@ -42,12 +38,7 @@ public class GameScreen extends javax.swing.JFrame {
         initCursors();
     }
 
-    /**
-     * Networked constructor — called when transitioning from StartScreen.
-     * 
-     * @param client the active NetworkClient connection
-     * @param color  this player's color ("BLACK" or "WHITE")
-     */
+    // Networked constructor called when the game starts
     public GameScreen(NetworkClient client, String color) {
         initComponents();
         game = new GameLogic(9);
@@ -58,17 +49,17 @@ public class GameScreen extends javax.swing.JFrame {
 
         this.networkClient = client;
         this.myColor = color;
-        this.isMyTurn = "BLACK".equals(color); /* BLACK always goes first */
+        this.isMyTurn = "BLACK".equals(color); // BLACK always goes first
 
-        /* update status labels */
+        // Update status labels
         jLabel_ConnectionStatus.setText("Connection : Connected");
         jLabel_CurrentTurn.setText("Current Turn : Black");
         updateTurnIndicator();
 
-        /* register this screen as the network listener */
+        // Register this screen as the network listener
         networkClient.setListener(new GameScreenListener());
 
-        /* wire the RESTART GAME button (no handler in initComponents) */
+        // Wire the PASS button
         jButton_RestartGame.addActionListener(e -> {
             if (networkClient != null) {
                 networkClient.sendPass();
@@ -76,10 +67,7 @@ public class GameScreen extends javax.swing.JFrame {
         });
     }
 
-    /* ========================================= */
-    /* Update the "Your Turn" / "Opponent's Turn" */
-    /* indicator label beneath the board */
-    /* ========================================= */
+    // Update the turn indicator and mouse cursor
     private void updateTurnIndicator() {
         if (isMyTurn) {
             jLabel2.setText("> Your Turn (" + myColor + ")");
@@ -138,13 +126,9 @@ public class GameScreen extends javax.swing.JFrame {
         }
     }
 
-    /* ========================================= */
-    /* Handle a mouse click on the board panel */
-    /* Maps pixel coords to grid intersection */
-    /* and sends the move to the server */
-    /* ========================================= */
+    // Handle clicking on the board to place a stone
     private void handleClick(java.awt.event.MouseEvent evt) {
-        /* only allow clicks when it is this player's turn */
+        // Only allow clicks when it is this player's turn
         if (!isMyTurn || networkClient == null) {
             return;
         }
@@ -156,30 +140,26 @@ public class GameScreen extends javax.swing.JFrame {
         int i = Math.round(evt.getX() / cellWidth);
         int j = Math.round(evt.getY() / cellHeight);
 
-        /* bounds check */
+        // Bounds check
         if (i < 0 || i >= size || j < 0 || j >= size) {
             return;
         }
 
-        /* send the move request to the server (server validates) */
+        // Send the move request to the server
         networkClient.sendMove(i, j);
         jPanel_Board.setCursor(cursorEmpty);
     }
 
-    /* ========================================= */
-    /* Network listener for the game phase */
-    /* All UI updates are wrapped in */
-    /* SwingUtilities.invokeLater() as required */
-    /* ========================================= */
+    // Listens for game updates from the server
     private class GameScreenListener implements NetworkClient.ServerMessageListener {
 
         @Override
         public void onWelcome(String color) {
-            /* already handled in lobby */ }
+        }
 
         @Override
         public void onGameStarted() {
-            /* already handled in lobby */ }
+        }
 
         @Override
         public void onBoardUpdate(String boardData) {
@@ -565,7 +545,7 @@ public class GameScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ExitGameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_ExitGameActionPerformed
-        /* disconnect from server and return to start screen */
+        // Disconnect from server and return to start screen
         if (networkClient != null) {
             networkClient.disconnect();
         }

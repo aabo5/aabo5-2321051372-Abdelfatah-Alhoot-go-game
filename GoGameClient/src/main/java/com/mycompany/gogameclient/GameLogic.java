@@ -22,24 +22,17 @@ public class GameLogic {
     int[] dr = { -1, 1, 0, 0 };
     int[] dc = { 0, 0, -1, 1 };
 
-    /* ========================================= */
-    /* Default constructor */
-    /* ========================================= */
+    // Default constructor
     public GameLogic() {
-        /* board is already initialized to EMPTY (0) */
+        // board is already initialized to EMPTY (0)
     }
 
-    /* ========================================= */
-
-    /* Check if inside board */
-    /* ========================================= */
+    // Check if inside board
     boolean isInside(int r, int c) {
         return r >= 0 && r < SIZE && c >= 0 && c < SIZE;
     }
 
-    /* ========================================= */
-    /* Reset visited array */
-    /* ========================================= */
+    // Reset visited array
     void resetVisited() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -48,15 +41,11 @@ public class GameLogic {
         }
     }
 
-    /* ========================================= */
-    /* DFS Liberty Check */
-    /* ========================================= */
+    // DFS Liberty Check
     boolean hasLiberty(int r, int c, int color) {
-
         visited[r][c] = true;
 
         for (int i = 0; i < 4; i++) {
-
             int nr = r + dr[i];
             int nc = c + dc[i];
 
@@ -64,47 +53,37 @@ public class GameLogic {
                 continue;
             }
 
-            /* liberty found */
+            // liberty found
             if (board[nr][nc] == EMPTY) {
                 return true;
             }
 
-            /* continue DFS */
+            // continue DFS
             if (board[nr][nc] == color && !visited[nr][nc]) {
-
                 if (hasLiberty(nr, nc, color)) {
                     return true;
                 }
             }
         }
-
         return false;
     }
 
-    /* ========================================= */
-    /* Remove connected group */
-    /* ========================================= */
+    // Remove connected group
     void removeGroup(int r, int c, int color) {
-
         board[r][c] = EMPTY;
 
         for (int i = 0; i < 4; i++) {
-
             int nr = r + dr[i];
             int nc = c + dc[i];
 
             if (isInside(nr, nc) && board[nr][nc] == color) {
-
                 removeGroup(nr, nc, color);
             }
         }
     }
 
-    /* ========================================= */
-    /* Check captures around placed stone */
-    /* ========================================= */
+    // Check captures around placed stone
     void checkCaptures(int r, int c, int player) {
-
         int enemy;
 
         if (player == BLACK) {
@@ -114,7 +93,6 @@ public class GameLogic {
         }
 
         for (int i = 0; i < 4; i++) {
-
             int nr = r + dr[i];
             int nc = c + dc[i];
 
@@ -123,38 +101,32 @@ public class GameLogic {
             }
 
             if (board[nr][nc] == enemy) {
-
                 resetVisited();
 
                 if (!hasLiberty(nr, nc, enemy)) {
-
                     removeGroup(nr, nc, enemy);
                 }
             }
         }
     }
 
-    /* ========================================= */
-    /* Place Stone */
-    /* ========================================= */
+    // Place Stone
     public boolean placeStone(int r, int c, int player) {
-
-        /* occupied */
+        // occupied
         if (board[r][c] != EMPTY) {
             return false;
         }
 
-        /* place stone */
+        // place stone
         board[r][c] = player;
 
-        /* capture enemies */
+        // capture enemies
         checkCaptures(r, c, player);
 
-        /* suicide check */
+        // suicide check
         resetVisited();
 
         if (!hasLiberty(r, c, player)) {
-
             board[r][c] = EMPTY;
             return false;
         }
@@ -162,27 +134,19 @@ public class GameLogic {
         return true;
     }
 
-    /* ========================================= */
-    /* Constructor with size parameter */
-    /* (alias for default — SIZE is fixed at 9) */
-    /* ========================================= */
+    // Constructor with size parameter
+    // (alias for default — SIZE is fixed at 9)
     public GameLogic(int size) {
-        /*
-         * SIZE is a compile-time constant; this constructor
-         * exists for compatibility with GameScreen
-         */
+        // SIZE is a compile-time constant; this constructor
+        // exists for compatibility with GameScreen
     }
 
-    /* ========================================= */
-    /* Board accessor */
-    /* ========================================= */
+    // Board accessor
     public int[][] getBoard() {
         return board;
     }
 
-    /* ========================================= */
-    /* Reset the board for a new match */
-    /* ========================================= */
+    // Reset the board for a new match
     public void resetBoard() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -191,10 +155,8 @@ public class GameLogic {
         }
     }
 
-    /* ========================================= */
-    /* Serialize board to 81-char string */
-    /* (row-major order, chars '0','1','2') */
-    /* ========================================= */
+    // Serialize board to 81-char string
+    // (row-major order, chars '0','1','2')
     public String serializeBoard() {
         StringBuilder sb = new StringBuilder(SIZE * SIZE);
         for (int i = 0; i < SIZE; i++) {
@@ -205,9 +167,7 @@ public class GameLogic {
         return sb.toString();
     }
 
-    /* ========================================= */
-    /* Deserialize 81-char string into board */
-    /* ========================================= */
+    // Deserialize 81-char string into board
     public void deserializeBoard(String data) {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -216,27 +176,25 @@ public class GameLogic {
         }
     }
 
-    /* ========================================= */
-    /* Territory scoring (Chinese-style) */
-    /* Stones on board + surrounded empty area */
-    /* ========================================= */
+    // Territory scoring (Chinese-style)
+    // Stones on board + surrounded empty area
     public int countTerritory(int color) {
         boolean[][] counted = new boolean[SIZE][SIZE];
         int score = 0;
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                /* count stones of this color */
+                // count stones of this color
                 if (board[i][j] == color) {
                     score++;
                 }
-                /* flood-fill empty regions */
+                // flood-fill empty regions
                 if (board[i][j] == EMPTY && !counted[i][j]) {
                     java.util.List<int[]> region = new java.util.ArrayList<>();
                     java.util.Set<Integer> borders = new java.util.HashSet<>();
                     floodFillTerritory(i, j, counted, region, borders);
 
-                    /* if region is bordered only by this color, count it */
+                    // if region is bordered only by this color, count it
                     if (borders.size() == 1 && borders.contains(color)) {
                         score += region.size();
                     }
@@ -246,9 +204,7 @@ public class GameLogic {
         return score;
     }
 
-    /* ========================================= */
-    /* Flood-fill helper for territory counting */
-    /* ========================================= */
+    // Flood-fill helper for territory counting
     private void floodFillTerritory(int r, int c, boolean[][] counted,
             java.util.List<int[]> region, java.util.Set<Integer> borders) {
 
@@ -270,17 +226,11 @@ public class GameLogic {
         }
     }
 
-    /* ========================================= */
-    /* Print board */
-    /* ========================================= */
+    // Print board
     public void printBoard() {
-
         System.out.println();
-
         for (int i = 0; i < SIZE; i++) {
-
             for (int j = 0; j < SIZE; j++) {
-
                 if (board[i][j] == EMPTY) {
                     System.out.print(". ");
                 } else if (board[i][j] == BLACK) {
@@ -289,28 +239,8 @@ public class GameLogic {
                     System.out.print("W ");
                 }
             }
-
             System.out.println();
         }
-
         System.out.println();
     }
-
-    /* ========================================= */
-    /* Main */
-    /* ========================================= */
-    public static void main(String[] args) {
-
-        GameLogic game = new GameLogic();
-
-        game.placeStone(4, 4, BLACK);
-
-        game.placeStone(4, 3, WHITE);
-        game.placeStone(4, 5, WHITE);
-        game.placeStone(3, 4, WHITE);
-        game.placeStone(5, 4, WHITE);
-
-        game.printBoard();
-    }
-
 }
