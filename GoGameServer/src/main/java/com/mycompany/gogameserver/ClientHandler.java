@@ -24,6 +24,10 @@ public class ClientHandler implements Runnable {
         this.playerName = (playerColor == GameLogic.BLACK) ? "BLACK" : "WHITE";
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new PrintWriter(socket.getOutputStream(), true);
+        
+        // Tell this client which color they are immediately upon connection
+        sendMessage("WELCOME:" + playerName);
+        System.out.println("[Server] " + playerName + " connected from " + socket.getInetAddress());
     }
 
     // Assign the game session
@@ -49,11 +53,6 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            // Tell this client which color they are
-            sendMessage("WELCOME:" + playerName);
-            System.out.println("[Server] " + playerName + " connected from "
-                    + socket.getInetAddress());
-
             String line;
             while ((line = in.readLine()) != null) {
 
