@@ -288,6 +288,8 @@
                               <Component id="jLabel_CurrentTurn" max="32767" attributes="0"/>
                               <Component id="jLabel_ConnectionStatus" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel_MyScore" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel_OpponentScore" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -302,6 +304,10 @@
                           <Component id="jLabel_ConnectionStatus" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel_CurrentTurn" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel_MyScore" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel_OpponentScore" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -336,6 +342,22 @@
                       <Color blue="0" green="33" red="66" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Match Status :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_MyScore">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Your Score: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel_OpponentScore">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Opponent&apos;s Score: 0"/>
                   </Properties>
                 </Component>
               </SubComponents>

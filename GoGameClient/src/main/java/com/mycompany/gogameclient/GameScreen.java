@@ -36,6 +36,7 @@ public class GameScreen extends javax.swing.JFrame {
         jList1_Moves.setModel(movesModel);
         FontUtil.setCustomFont(this);
         initCursors();
+        updateScores();
     }
 
     // Networked constructor called when the game starts
@@ -55,6 +56,7 @@ public class GameScreen extends javax.swing.JFrame {
         jLabel_ConnectionStatus.setText("Connection : Connected");
         jLabel_CurrentTurn.setText("Current Turn : Black");
         updateTurnIndicator();
+        updateScores();
 
         // Register this screen as the network listener
         networkClient.setListener(new GameScreenListener());
@@ -82,6 +84,28 @@ public class GameScreen extends javax.swing.JFrame {
             jLabel2.setText("  Opponent's Turn");
             // When it's the opponent's turn, make my hand empty
             jPanel_Board.setCursor(cursorEmpty);
+        }
+    }
+
+    // Recalculates and updates score labels using Chinese territory counting rules
+    private void updateScores() {
+        if (game == null) {
+            return;
+        }
+        // Count territories
+        int blackScore = game.countTerritory(GameLogic.BLACK);
+        int whiteScore = game.countTerritory(GameLogic.WHITE);
+
+        // Update labels depending on myColor (BLACK or WHITE)
+        if ("BLACK".equals(myColor)) {
+            jLabel_MyScore.setText("Your Score (Black): " + blackScore);
+            jLabel_OpponentScore.setText("Opponent's Score (White): " + whiteScore);
+        } else if ("WHITE".equals(myColor)) {
+            jLabel_MyScore.setText("Your Score (White): " + whiteScore);
+            jLabel_OpponentScore.setText("Opponent's Score (Black): " + blackScore);
+        } else {
+            jLabel_MyScore.setText("Black Score: " + blackScore);
+            jLabel_OpponentScore.setText("White Score: " + whiteScore);
         }
     }
 
@@ -166,6 +190,7 @@ public class GameScreen extends javax.swing.JFrame {
             javax.swing.SwingUtilities.invokeLater(() -> {
                 game.deserializeBoard(boardData);
                 jPanel_Board.repaint();
+                updateScores();
             });
         }
 
@@ -253,6 +278,8 @@ public class GameScreen extends javax.swing.JFrame {
         jLabel_ConnectionStatus = new javax.swing.JLabel();
         jLabel_CurrentTurn = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel_MyScore = new javax.swing.JLabel();
+        jLabel_OpponentScore = new javax.swing.JLabel();
         jPanel_Board = new javax.swing.JPanel() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
@@ -410,6 +437,12 @@ public class GameScreen extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 51, 0));
         jLabel4.setText("Match Status :");
 
+        jLabel_MyScore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_MyScore.setText("Your Score: 0");
+
+        jLabel_OpponentScore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_OpponentScore.setText("Opponent's Score: 0");
+
         javax.swing.GroupLayout jPanel_StatusBarLayout = new javax.swing.GroupLayout(jPanel_StatusBar);
         jPanel_StatusBar.setLayout(jPanel_StatusBarLayout);
         jPanel_StatusBarLayout.setHorizontalGroup(
@@ -423,6 +456,10 @@ public class GameScreen extends javax.swing.JFrame {
                                         .addComponent(jLabel_ConnectionStatus, javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel_MyScore, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel_OpponentScore, javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap()));
         jPanel_StatusBarLayout.setVerticalGroup(
@@ -437,7 +474,13 @@ public class GameScreen extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel_CurrentTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 26,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_MyScore, javax.swing.GroupLayout.PREFERRED_SIZE, 26,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_OpponentScore, javax.swing.GroupLayout.PREFERRED_SIZE, 26,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         javax.swing.GroupLayout jPanel_SideBarLayout = new javax.swing.GroupLayout(jPanel_SideBar);
         jPanel_SideBar.setLayout(jPanel_SideBarLayout);
@@ -567,6 +610,8 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_ConnectionStatus;
     private javax.swing.JLabel jLabel_CurrentTurn;
+    private javax.swing.JLabel jLabel_MyScore;
+    private javax.swing.JLabel jLabel_OpponentScore;
     private javax.swing.JList<String> jList1_Moves;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Board;
