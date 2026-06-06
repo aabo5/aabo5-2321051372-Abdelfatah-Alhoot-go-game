@@ -26,7 +26,7 @@ public class ClientHandler implements Runnable {
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.isRunning = true;
-        
+
         // Tell this client which color they are immediately upon connection
         sendMessage("WELCOME:" + playerName);
         System.out.println("[Server] " + playerName + " connected from " + socket.getInetAddress());
@@ -45,7 +45,7 @@ public class ClientHandler implements Runnable {
     public String getPlayerName() {
         return playerName;
     }
-    
+
     // Helper to let the server know if this client disconnected while waiting
     public boolean isSocketClosed() {
         return socket.isClosed();
@@ -55,7 +55,7 @@ public class ClientHandler implements Runnable {
     public void sendMessage(String msg) {
         out.println(msg);
     }
-    
+
     // Disconnect safely
     public void disconnect() {
         isRunning = false;
@@ -63,7 +63,8 @@ public class ClientHandler implements Runnable {
             if (!socket.isClosed()) {
                 socket.close();
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     // Main read loop runs on its own thread
@@ -80,13 +81,16 @@ public class ClientHandler implements Runnable {
                     String[] parts = line.substring(5).split(",");
                     int r = Integer.parseInt(parts[0]);
                     int c = Integer.parseInt(parts[1]);
-                    if (session != null) session.handleMove(this, r, c);
+                    if (session != null)
+                        session.handleMove(this, r, c);
 
                 } else if (line.equals("PASS")) {
-                    if (session != null) session.handlePass(this);
+                    if (session != null)
+                        session.handlePass(this);
 
                 } else if (line.equals("RESTART_REQ")) {
-                    if (session != null) session.handleRestartRequest(this);
+                    if (session != null)
+                        session.handleRestartRequest(this);
                 }
             }
         } catch (IOException e) {
