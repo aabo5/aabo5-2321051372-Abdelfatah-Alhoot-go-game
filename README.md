@@ -285,10 +285,3 @@ These are realistic additions based on what the current codebase already support
 - **Sound effects** — play a stone-click sound on valid moves and a notification sound on opponent's turn.
 - **Connection timeout** — the client currently hangs if the server is unreachable. Adding a socket timeout would let it fail gracefully.
 
-## Contributors
-
-- **Abdelfatah Alhoot** — full implementation (client, server, game logic, UI design)
-
-## License
-
-No license file was found in the repository. All rights are reserved by the author by default. If you intend to make this project open-source, consider adding an [MIT](https://choosealicense.com/licenses/mit/) or [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/) license file.
