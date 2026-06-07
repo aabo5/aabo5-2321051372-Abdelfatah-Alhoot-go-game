@@ -270,18 +270,3 @@ The server is a headless Java application that can run on any machine with Java 
 5. Clients connect using the server's public IP address.
 
 The client runs locally on each player's machine. It requires a graphical environment (desktop OS) since it uses Swing.
-
-## Future Improvements
-
-These are realistic additions based on what the current codebase already supports:
-
-- **Ko rule** — the current implementation does not enforce the ko rule (repeating a board position). This would require storing the previous board state and comparing after each move.
-- **Configurable board size** — the board is fixed at 9×9. Supporting 13×13 and 19×19 would require parameterizing `GameLogic.SIZE`, adjusting the serialization length, and making the GUI scale the grid dynamically.
-- **In-game chat** — the protocol already has a `MESSAGE:` command. Adding `CHAT:<text>` from client to server and `MESSAGE:<player>:<text>` broadcasts would be straightforward.
-- **Spectator mode** — allow additional clients to connect to an active session as read-only observers who receive board updates but cannot send moves.
-- **Game history / replay** — save the sequence of moves to a file, allowing games to be replayed or reviewed.
-- **Komi (handicap scoring)** — add a 6.5-point komi for WHITE to compensate for BLACK's first-move advantage, which is standard in competitive Go.
-- **Circle-shaped stones** — stones are currently drawn as filled rectangles (`fillRect`). Switching to `fillOval` would look closer to a traditional Go board.
-- **Sound effects** — play a stone-click sound on valid moves and a notification sound on opponent's turn.
-- **Connection timeout** — the client currently hangs if the server is unreachable. Adding a socket timeout would let it fail gracefully.
-
